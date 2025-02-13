@@ -10,29 +10,48 @@
             color: yellow;
             font-family: Comic Sans MS, cursive;
             text-align: center;
-            animation: flash 0.5s infinite alternate;
+            animation: flash 0.02s infinite alternate;
+            cursor: none;
+            overflow: hidden;
+            transform: scale(2) rotate(10deg) skew(10deg);
+            filter: blur(5px) invert(1);
         }
         @keyframes flash {
             from { background-color: #ff00ff; }
             to { background-color: #00ffff; }
         }
         .painike {
-            font-size: 24px;
+            font-size: 32px;
             background-color: lime;
-            border: 5px dashed red;
-            padding: 20px;
-            cursor: pointer;
-        }
-        .piilotettu {
+            border: 10px dotted red;
+            padding: 30px;
+            cursor: not-allowed;
+            animation: shake 0.1s infinite;
             position: absolute;
-            top: -100px;
-            left: -100px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(720deg);
+        }
+        @keyframes shake {
+            0% { transform: translate(5px, 5px) rotate(5deg); }
+            50% { transform: translate(-5px, -5px) rotate(-5deg); }
+            100% { transform: translate(5px, 5px) rotate(5deg); }
+        }
+        .sotkuinen-teksti {
+            font-size: 50px;
+            transform: rotate(-45deg) scale(2);
+            text-shadow: 20px 20px 10px black;
+            animation: wobble 0.05s infinite alternate;
+        }
+        @keyframes wobble {
+            from { transform: rotate(-45deg) scale(2); }
+            to { transform: rotate(45deg) scale(3); }
         }
     </style>
 </head>
 <body>
-    <h1>Onnittelut, olet saapunut epäkäytettävyyden huipulle!</h1>
-    <p>Yritä navigoida tällä sivulla, jos uskallat.</p>
+    <h1 class="sotkuinen-teksti">Onnittelut, olet saapunut UX-helvettiin!</h1>
+    <p class="sotkuinen-teksti">Yritä navigoida... jos pystyt!</p>
     
     <button class="painike" onclick="avainToiminto()">ÄLÄ PAINA!</button>
     <button class="painike" onclick="window.location.href='https://google.com'">Tämä vie sinut pois!</button>
@@ -40,8 +59,23 @@
     <script>
         function avainToiminto() {
             alert("Väärä valinta! Yritä uudelleen.");
-            document.body.style.transform = "rotate(180deg)";
+            document.body.style.transform = "rotate(360deg) scale(3)";
+            setTimeout(() => {
+                document.body.style.transform = "rotate(0deg) scale(1)";
+                alert("Ei onnistunut vieläkään!");
+            }, 1000);
         }
+        
+        setInterval(() => {
+            document.body.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+            document.body.style.transform = `rotate(${Math.random()*20 - 10}deg) scale(${Math.random()*2 + 1}) skew(${Math.random()*20 - 10}deg)`;
+            document.body.style.filter = `blur(${Math.random()*10}px) invert(1)`;
+        }, 50);
+        
+        setInterval(() => {
+            alert("Pop-up terrori iskee!");
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+        }, 2000);
     </script>
 </body>
 </html>
