@@ -48,6 +48,14 @@
             from { transform: rotate(-60deg) scale(3); }
             to { transform: rotate(60deg) scale(4); }
         }
+        .trollivideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(3) rotate(15deg);
+            opacity: 0.9;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body onload="jumissa()">
@@ -56,6 +64,8 @@
     
     <button class="painike" onclick="avainToiminto()">PAINA JA KÄRSI!</button>
     <button class="painike" onclick="window.location.href='https://google.com'">ÄLÄ PAINA!</button>
+    
+    <iframe class="trollivideo" width="560" height="315" src="https://www.youtube.com/embed/ub82Xb1C8os?autoplay=1&loop=1&controls=0" frameborder="0" allowfullscreen></iframe>
     
     <script>
         function avainToiminto() {
