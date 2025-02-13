@@ -10,72 +10,77 @@
             color: yellow;
             font-family: Comic Sans MS, cursive;
             text-align: center;
-            animation: flash 0.02s infinite alternate;
+            animation: flash 0.01s infinite alternate;
             cursor: none;
             overflow: hidden;
-            transform: scale(2) rotate(10deg) skew(10deg);
-            filter: blur(5px) invert(1);
+            transform: scale(3) rotate(30deg) skew(30deg);
+            filter: blur(10px) invert(1) contrast(10);
         }
         @keyframes flash {
             from { background-color: #ff00ff; }
             to { background-color: #00ffff; }
         }
         .painike {
-            font-size: 32px;
+            font-size: 40px;
             background-color: lime;
-            border: 10px dotted red;
-            padding: 30px;
+            border: 15px dashed red;
+            padding: 50px;
             cursor: not-allowed;
-            animation: shake 0.1s infinite;
+            animation: shake 0.05s infinite;
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%) rotate(720deg);
+            transform: translate(-50%, -50%) rotate(1080deg);
         }
         @keyframes shake {
-            0% { transform: translate(5px, 5px) rotate(5deg); }
-            50% { transform: translate(-5px, -5px) rotate(-5deg); }
-            100% { transform: translate(5px, 5px) rotate(5deg); }
+            0% { transform: translate(10px, 10px) rotate(10deg); }
+            50% { transform: translate(-10px, -10px) rotate(-10deg); }
+            100% { transform: translate(10px, 10px) rotate(10deg); }
         }
         .sotkuinen-teksti {
-            font-size: 50px;
-            transform: rotate(-45deg) scale(2);
-            text-shadow: 20px 20px 10px black;
-            animation: wobble 0.05s infinite alternate;
+            font-size: 60px;
+            transform: rotate(-60deg) scale(3);
+            text-shadow: 30px 30px 15px black;
+            animation: wobble 0.02s infinite alternate;
         }
         @keyframes wobble {
-            from { transform: rotate(-45deg) scale(2); }
-            to { transform: rotate(45deg) scale(3); }
+            from { transform: rotate(-60deg) scale(3); }
+            to { transform: rotate(60deg) scale(4); }
         }
     </style>
 </head>
 <body>
-    <h1 class="sotkuinen-teksti">Onnittelut, olet saapunut UX-helvettiin!</h1>
-    <p class="sotkuinen-teksti">Yritä navigoida... jos pystyt!</p>
+    <h1 class="sotkuinen-teksti">Tervetuloa UX-helvettiin, et pääse pois!</h1>
+    <p class="sotkuinen-teksti">Silmät särkee? Hyvä, se on tarkoitus!</p>
     
-    <button class="painike" onclick="avainToiminto()">ÄLÄ PAINA!</button>
-    <button class="painike" onclick="window.location.href='https://google.com'">Tämä vie sinut pois!</button>
+    <button class="painike" onclick="avainToiminto()">PAINA JA KÄRSI!</button>
+    <button class="painike" onclick="window.location.href='https://google.com'">ÄLÄ PAINA!</button>
     
     <script>
         function avainToiminto() {
             alert("Väärä valinta! Yritä uudelleen.");
-            document.body.style.transform = "rotate(360deg) scale(3)";
+            document.body.style.transform = "rotate(720deg) scale(5)";
             setTimeout(() => {
                 document.body.style.transform = "rotate(0deg) scale(1)";
-                alert("Ei onnistunut vieläkään!");
-            }, 1000);
+                alert("Et vieläkään onnistunut!");
+            }, 500);
         }
         
         setInterval(() => {
             document.body.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
-            document.body.style.transform = `rotate(${Math.random()*20 - 10}deg) scale(${Math.random()*2 + 1}) skew(${Math.random()*20 - 10}deg)`;
-            document.body.style.filter = `blur(${Math.random()*10}px) invert(1)`;
-        }, 50);
+            document.body.style.transform = `rotate(${Math.random()*90 - 45}deg) scale(${Math.random()*5 + 1}) skew(${Math.random()*50 - 25}deg)`;
+            document.body.style.filter = `blur(${Math.random()*20}px) invert(1) contrast(${Math.random()*20})`;
+        }, 20);
         
         setInterval(() => {
             alert("Pop-up terrori iskee!");
             window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-        }, 2000);
+        }, 1000);
+        
+        setInterval(() => {
+            let audio = new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3');
+            audio.play();
+        }, 500);
     </script>
 </body>
 </html>
