@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maailman Huonoin UI</title>
+    <style>
+        body {
+            background-color: #ff00ff;
+            color: yellow;
+            font-family: Comic Sans MS, cursive;
+            text-align: center;
+            animation: flash 0.5s infinite alternate;
+        }
+        @keyframes flash {
+            from { background-color: #ff00ff; }
+            to { background-color: #00ffff; }
+        }
+        .painike {
+            font-size: 24px;
+            background-color: lime;
+            border: 5px dashed red;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .piilotettu {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Onnittelut, olet saapunut epäkäytettävyyden huipulle!</h1>
+    <p>Yritä navigoida tällä sivulla, jos uskallat.</p>
+    
+    <button class="painike" onclick="avainToiminto()">ÄLÄ PAINA!</button>
+    <button class="painike" onclick="window.location.href='https://google.com'">Tämä vie sinut pois!</button>
+    
+    <script>
+        function avainToiminto() {
+            alert("Väärä valinta! Yritä uudelleen.");
+            document.body.style.transform = "rotate(180deg)";
+        }
+    </script>
+</body>
+</html>
