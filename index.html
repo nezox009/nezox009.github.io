@@ -15,6 +15,7 @@
             overflow: hidden;
             transform: scale(3) rotate(30deg) skew(30deg);
             filter: blur(10px) invert(1) contrast(10);
+            pointer-events: none;
         }
         @keyframes flash {
             from { background-color: #ff00ff; }
@@ -49,7 +50,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="jumissa()">
     <h1 class="sotkuinen-teksti">Tervetuloa UX-helvettiin, et pääse pois!</h1>
     <p class="sotkuinen-teksti">Silmät särkee? Hyvä, se on tarkoitus!</p>
     
@@ -75,12 +76,20 @@
         setInterval(() => {
             alert("Pop-up terrori iskee!");
             window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
-        }, 1000);
+        }, 500);
         
         setInterval(() => {
             let audio = new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3');
             audio.play();
-        }, 500);
+        }, 300);
+        
+        function jumissa() {
+            history.pushState(null, null, document.URL);
+            window.addEventListener('popstate', function () {
+                history.pushState(null, null, document.URL);
+                alert("Et pääse pois! Hahahaha!");
+            });
+        }
     </script>
 </body>
 </html>
